@@ -1,55 +1,68 @@
+
 <template>
   <div id="app" class="container-fluid">
-    <div class="row" v-bind:style="styleObject1">
+    <div class="row">
       <div class="col-md-12" >
-     <top-content></top-content>
+        <nav class="navbar navbar-default com-header" >
+           <div class="container-fluid" >
+              <div class="navbar-header">
+                <a href="#">
+                  <img src="./assets/logo.png">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse" v-if="showUser">
+                 <ul class="nav navbar-nav navbar-right">
+                    <li > <a>Link</a></li>
+                 </ul>
+             </div>
+          </div>
+        </nav>
       </div>
     </div>
-    <div class="row" v-bind:style="styleObject2">
+    <div class="row" >
       <div class="col-md-12">
         <router-view/>
       </div>
     </div>
-    <div class="row" v-bind:style="styleObject3">
-      <div class="col-md-12">
-     <bottom-content></bottom-content>
-      </div>
-    </div>
   </div>
 </template>
-<script>
-import BottomContent from './components/BottomContent/BottomContent.vue';
-import TopContent from './components/TopContent/TopContent.vue';
 
-export default{
+<script>
+
+
+export default {
   name: 'app',
   mounted(){
-    this.init();
-  },
-  components:{
-  "bottom-content":BottomContent,
-  "top-content":TopContent
+  
   },
   data(){
     return{
-      styleObject1:{
-        height:'100px',
-      backgroundColor:'#e2e2e2'
-      },
-      styleObject2:{
-        height:'0px'
-      },
-      styleObject3:{
-        height:"100px",
-        backgroundColor:'#e2e2e2'
-      }
+    
     }
+  },
+  computed:{
+    showUser:function(){
+      return this.$store.state.showUser
+    }
+
+
   },
   methods:{
     init(){
       this.styleObject2.height=document.body.clientHeight- parseInt(this.styleObject1.height)-parseInt(this.styleObject3.height)+"px";
     },
-    
+   
   }
 }
 </script>
+<style>
+.com-header{
+      height:45px;
+      background-color:#333333;
+      border-width:0px;
+}
+  body{
+  background-image:url('./assets/bglogin.png');
+
+  }
+</style>
