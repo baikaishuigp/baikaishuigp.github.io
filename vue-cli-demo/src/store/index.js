@@ -8,12 +8,12 @@ import Vuex from 'vuex'
  export default new Vuex.Store({
  	state:{
  		showUser:false,
- 		user:null
+ 		
  	},
  	mutations:{
- 		SHOW_TOPBUTTON(state,b){
- 			console.log(b)
- 			state.showUser=b
+ 		SHOW_TOPBUTTON(state,showObj){
+ 			
+ 			state.showUser=showObj.isShow
  		}
  	},
 

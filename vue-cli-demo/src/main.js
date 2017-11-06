@@ -19,6 +19,6 @@ new Vue({
   template: '<App/>',
   components: { App },
   mounted(){
-  	$("body").css("background-color","#353535");
+  //	$("body").css("background-color","#353535");
   }
 })
